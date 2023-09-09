@@ -1,6 +1,5 @@
 import { BehaviorSubject, Observable } from "rxjs";
 
-
 export abstract class BaseFacade<T = any> {
   private store = new BehaviorSubject<T[]>([])
   public readonly data$: Observable<T[]> = this.store.asObservable()
@@ -19,9 +18,5 @@ export abstract class BaseFacade<T = any> {
     this.store.next(exitingData)
   }
   
-  // protected loadData(): void {
-    // this.apiService.getBarData().subscribe((data) => {
-    //   this.addData(data)
-    // })
-  // }
+  abstract loadData(): void
 }
